@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "include": ["/*"],
+  "exclude": [
+    "/assets/*",
+    "/icons/*",
+    "/manifest.webmanifest",
+    "/offline.html",
+    "/sw.js"
+  ]
+}

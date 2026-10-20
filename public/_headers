@@ -1,0 +1,17 @@
+# Cloudflare Pages Security & Cache Headers
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Cross-Origin-Opener-Policy: same-origin-allow-popups
+  Permissions-Policy: camera=(self), microphone=(), geolocation=(self), payment=(), usb=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://*.supabase.co wss://*.supabase.co https://accounts.google.com https://identitytoolkit.googleapis.com https://fcm.googleapis.com https://*.googleapis.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';
+
+# Cache immutable hashed static assets for 1 year
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Prevent stale caching of SPA entry point
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate

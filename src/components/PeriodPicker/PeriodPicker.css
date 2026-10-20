@@ -1,0 +1,464 @@
+/* Period Picker & Global Date Filter Styles */
+
+.period-bar-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+}
+
+.period-step-btn {
+  background: var(--bg-card-subtle);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  width: 28px;
+  height: 32px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.period-step-btn:hover {
+  background: var(--bg-card-hover);
+  color: var(--text-main);
+  border-color: var(--border-color-strong, #475569);
+}
+
+.period-bar-trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-card-subtle);
+  border: 1px solid var(--border-color);
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+  font-size: 12px;
+  color: var(--text-main);
+  height: 32px;
+}
+
+.period-bar-trigger:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--blue-accent, #38bdf8);
+  box-shadow: 0 0 0 1px var(--blue-accent, #38bdf8);
+}
+
+.period-bar-trigger.active {
+  border-color: var(--blue-accent, #38bdf8);
+  background: rgba(56, 189, 248, 0.08);
+}
+
+.period-bar-label {
+  font-weight: 700;
+  color: var(--text-main);
+  white-space: nowrap;
+}
+
+.period-bar-range {
+  color: var(--text-muted);
+  font-size: 11.5px;
+  white-space: nowrap;
+}
+
+.period-bar-cmp-pill {
+  font-size: 9.5px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+/* Popover Modal / Sheet */
+.period-popover {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background: var(--bg-card, #0f172a);
+  border: 1px solid var(--border-color, #334155);
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+  z-index: 1200;
+  display: none;
+  width: 780px;
+  max-width: 95vw;
+  animation: popoverFadeIn 0.15s ease-out;
+  overflow: hidden;
+}
+
+.period-popover.open {
+  display: block;
+}
+
+@keyframes popoverFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.period-popover-body {
+  display: flex;
+  min-height: 380px;
+}
+
+/* Presets Sidebar (Left) */
+.period-presets-sidebar {
+  width: 220px;
+  background: var(--bg-card-subtle, #1e293b);
+  border-right: 1px solid var(--border-color);
+  padding: 12px 8px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  max-height: 480px;
+}
+
+.period-preset-group-title {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--text-dim, #64748b);
+  padding: 8px 10px 4px;
+  letter-spacing: 0.5px;
+}
+
+.period-preset-btn {
+  text-align: left;
+  background: transparent;
+  border: none;
+  padding: 7px 10px;
+  font-size: 12px;
+  color: var(--text-muted);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.12s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.period-preset-btn:hover {
+  background: var(--bg-card-hover, rgba(255,255,255,0.06));
+  color: var(--text-main);
+}
+
+.period-preset-btn.active {
+  background: var(--blue-accent, #2563eb);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Dual Month Calendar View (Right) */
+.period-calendar-view {
+  flex: 1;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.period-calendar-dual-wrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.period-single-month {
+  flex: 1;
+}
+
+.period-month-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.period-month-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.period-month-btn {
+  background: none;
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  width: 26px;
+  height: 26px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.period-month-btn:hover {
+  background: var(--bg-card-hover);
+  color: var(--text-main);
+}
+
+.period-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  text-align: center;
+}
+
+.period-cal-head {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--text-dim);
+  padding: 6px 0;
+}
+
+.period-cal-day {
+  font-size: 11.5px;
+  padding: 6px 0;
+  border-radius: 4px;
+  cursor: pointer;
+  color: var(--text-main);
+  transition: all 0.1s ease;
+  user-select: none;
+  position: relative;
+}
+
+.period-cal-day:hover:not(.empty):not(.disabled) {
+  background: rgba(56, 189, 248, 0.2);
+  color: #38bdf8;
+}
+
+.period-cal-day.empty {
+  cursor: default;
+}
+
+.period-cal-day.disabled {
+  color: var(--text-dim, #475569);
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.period-cal-day.selected-start {
+  background: var(--blue-accent, #2563eb) !important;
+  color: #fff !important;
+  font-weight: 700;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.period-cal-day.selected-end {
+  background: var(--blue-accent, #2563eb) !important;
+  color: #fff !important;
+  font-weight: 700;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.period-cal-day.selected-start.selected-end {
+  border-radius: 4px !important;
+}
+
+.period-cal-day.in-range {
+  background: rgba(37, 99, 235, 0.18) !important;
+  color: var(--text-main);
+  border-radius: 0;
+}
+
+.period-cal-day.today-marker::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #38bdf8;
+}
+
+/* Compare Row */
+.period-compare-bar {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.period-compare-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.period-compare-select {
+  background: var(--bg-card-subtle);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  font-size: 11.5px;
+  border-radius: 6px;
+  padding: 4px 8px;
+  outline: none;
+}
+
+.period-custom-inputs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.period-date-input {
+  background: var(--bg-card-subtle);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  font-size: 11.5px;
+  border-radius: 6px;
+  padding: 4px 8px;
+  outline: none;
+  font-family: inherit;
+}
+
+/* Popover Footer */
+.period-popover-footer {
+  padding: 12px 18px;
+  border-top: 1px solid var(--border-color);
+  background: var(--bg-card-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.period-summary-text {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.period-footer-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* Page Period Header Chip & Bar */
+.page-period-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  background: var(--bg-card-subtle);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 8px 14px;
+  margin-bottom: 18px;
+  font-size: 12px;
+}
+
+.page-period-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.page-period-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: 600;
+  color: var(--text-main);
+  font-size: 11.5px;
+}
+
+.page-period-pin-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: all 0.15s ease;
+}
+
+.page-period-pin-btn:hover {
+  background: var(--bg-card-hover);
+  color: var(--text-main);
+}
+
+.page-period-pin-btn.unpinned {
+  border-color: #f59e0b;
+  color: #fbbf24;
+  background: rgba(245, 158, 11, 0.1);
+}
+
+.period-warning-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #fbbf24;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* Mobile Full Screen Sheet (< 768px) */
+@media (max-width: 768px) {
+  .period-popover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    z-index: 9999;
+  }
+
+  .period-popover-body {
+    flex-direction: column;
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  .period-presets-sidebar {
+    width: 100%;
+    max-height: 160px;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .period-calendar-dual-wrapper {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
